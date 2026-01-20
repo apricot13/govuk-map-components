@@ -14,9 +14,22 @@ const CHECK_INTERVAL = 2000;
  * Expects to find a Govuk Tag as a child, which it colors and updates with the current status.
  *
  * Example usage:
- *   <status-checker job-id="1234" job-title="Article 4 Direction">
+ *   <status-checker job-id="1234" job-title="Article 4 Direction" api-path="http://localhost:8081/api/jobs">
  *     <strong class="govuk-tag govuk-tag--grey">queued</strong>
  *   </status-checker>
+ *
+ *   <p>
+ *     The current status is:
+ *     <strong>
+ *       <status-checker
+ *         job-id="1234"
+ *         job-title="Article 4 Direction"
+ *         api-path="http://localhost:8081/api/jobs"
+ *       >
+ *         unknown
+ *       </status-checker>
+ *     </strong>
+ *   </p>
  */
 export class StatusChecker extends HTMLElement {
   private tag: HTMLElement | null = null;
@@ -28,9 +41,19 @@ export class StatusChecker extends HTMLElement {
     const apiPath = this.getAttribute("api-path");
     if (!apiPath) return;
 
-    // Find the tag and add the alert region if not present
-    this.tag = this.querySelector("strong");
-    if (!this.tag) return;
+    // Find the first child element to use as the status tag
+    this.tag = this.querySelector(":scope > *:not(.status-checker__alert)");
+    if (!this.tag) {
+      // If no child element, wrap existing text in a span
+      const text = this.textContent?.trim() || "";
+      // Remove all text nodes
+      while (this.firstChild) {
+        this.removeChild(this.firstChild);
+      }
+      this.tag = document.createElement("span");
+      this.tag.textContent = text;
+      this.appendChild(this.tag);
+    }
 
     // Create alert region if it doesn't exist
     this.alert = this.querySelector(
@@ -107,12 +130,11 @@ export class StatusChecker extends HTMLElement {
         window.setTimeout(() => this.#checkStatus(), CHECK_INTERVAL);
       }
     } catch {
-      this.tag.textContent = "error";
-      this.#setAlert("error");
+      this.tag.textContent = "unknown";
+      this.#setAlert("unknown");
       this.#setStatusColour();
     }
   }
-
   /**
    * Set the color of the status tag based on the current status.
    * @returns
@@ -148,3 +170,9 @@ export class StatusChecker extends HTMLElement {
 }
 
 customElements.define("status-checker", StatusChecker);
+
+declare global {
+  interface HTMLElementTagNameMap {
+    "status-checker": StatusChecker;
+  }
+}
