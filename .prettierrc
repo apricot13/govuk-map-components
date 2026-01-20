@@ -11,5 +11,14 @@
   "bracketSameLine": false,
   "jsxSingleQuote": false,
   "quoteProps": "as-needed",
-  "semi": true
+  "semi": true,
+  "plugins": ["prettier-plugin-jinja-template"],
+  "overrides": [
+    {
+      "files": ["src/**/*.njk"],
+      "options": {
+        "parser": "jinja-template"
+      }
+    }
+  ]
 }

@@ -49,6 +49,9 @@ devDependencies:
   prettier:
     specifier: ^3.8.0
     version: 3.8.0
+  prettier-plugin-jinja-template:
+    specifier: ^2.1.0
+    version: 2.1.0(prettier@3.8.0)
   sass:
     specifier: ^1.97.2
     version: 1.97.2
@@ -6325,6 +6328,14 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       fast-diff: 1.3.0
+    dev: true
+
+  /prettier-plugin-jinja-template@2.1.0(prettier@3.8.0):
+    resolution: {integrity: sha512-mzoCp2Oy9BDSug80fw3B3J4n4KQj1hRvoQOL1akqcDKBb5nvYxrik9zUEDs4AEJ6nK7QDTGoH0y9rx7AlnQ78Q==}
+    peerDependencies:
+      prettier: ^3.0.0
+    dependencies:
+      prettier: 3.8.0
     dev: true
 
   /prettier@1.19.1:

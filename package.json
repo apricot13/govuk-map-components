@@ -27,7 +27,7 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext js,ts,cjs,cts,mjs",
-    "lint:fix": "prettier . --write",
+    "lint:fix": "eslint . --fix && prettier --write .",
     "prepare": "husky && echo 'npx lint-staged' > .husky/pre-commit && git add .husky/pre-commit"
   },
   "devDependencies": {
@@ -44,6 +44,7 @@
     "jiti": "^2.6.1",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.0",
+    "prettier-plugin-jinja-template": "^2.1.0",
     "sass": "^1.97.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.53.1",
