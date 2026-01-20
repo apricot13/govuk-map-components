@@ -1,0 +1,40 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "vitest/globals"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler", // Node-like resolution but optimized for bundlers
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+
+    /* Extras */
+    "declaration": true, // Generate .d.ts files
+    "emitDeclarationOnly": true,
+    // "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "outDir": "./types",
+    "rootDir": "./src"
+  },
+  "include": [
+    "src/**/*.ts",
+    "types/*.d.ts",
+    "src/components/example-component/example-component.ts"
+  ],
+  "exclude": ["src/components/*.doc.js", "src/components/docs/*.doc.js"]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "frontend-components",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "browser": "./dist/frontend-components.umd.js",
+  "module": "./dist/frontend-components.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/frontend-components.es.js",
+      "require": "./dist/frontend-components.umd.js"
+    },
+    "./frontend-components.css": "./dist/frontend-components.css"
+  },
+  "types": "./dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "dev": "npm run build && concurrently 'npm run dev:dev' 'npm run docs:dev'",
+    "build": "rm -rf dist types && tsc && vite build && sed 's/src=\".*\"/src=\"frontend-components.es.js\"/' index.html > dist/index.html",
+    "dev:dev": "vite",
+    "docs:dev": "NODE_ENV=development pitsby build --watch",
+    "docs:build": "NODE_ENV=production pitsby build",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "prettier . --write"
+  },
+  "devDependencies": {
+    "@glorious/pitsby": "^1.37.2",
+    "@vitest/coverage-v8": "4.0.17",
+    "@vitest/ui": "^4.0.17",
+    "concurrently": "^9.2.1",
+    "eslint": "^9.39.2",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "globals": "^17.0.0",
+    "happy-dom": "^20.3.4",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.0",
+    "sass": "^1.97.2",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.53.1",
+    "vite": "^7.2.4",
+    "vitest": "^4.0.17"
+  },
+  "dependencies": {
+    "govuk-frontend": "^5.14.0"
+  }
+}

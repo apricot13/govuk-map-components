@@ -1,0 +1,9 @@
+@layer settings, tools, generic, elements, objects, components, trumps;
+/* // ITCSS structure */
+
+@import url("./_01-settings.css") layer(settings);
+@import url("./_02-tools.css") layer(tools);
+@import url("./_03-elements.css") layer(elements);
+@import url("./_components--card.css") layer(components);
+@import url("./_components--layout.css") layer(components);
+@import url("./_components--skip-link.css") layer(components);
