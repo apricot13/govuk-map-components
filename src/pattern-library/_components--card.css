@@ -7,7 +7,7 @@
   border: 1px solid #e5e7eb;
   transition: box-shadow 0.2s;
 
-  pre {
+  > pre {
     background: #f4f4f8;
     border-radius: 6px;
     padding: 1rem;

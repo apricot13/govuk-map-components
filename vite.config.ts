@@ -36,10 +36,17 @@ export default defineConfig({
       ),
     },
   },
-  // https://vitest.dev/config/#options
   test: {
-    globals: true,
-    environment: "happy-dom",
+    projects: [
+      {
+        test: {
+          include: ["**/*.{test,spec}.ts"],
+          name: "unit",
+          environment: "happy-dom",
+          globals: true,
+        },
+      },
+    ],
   },
   css: {
     preprocessorOptions: {

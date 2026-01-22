@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@glorious/pitsby": "^1.37.2",
+    "@vitest/browser-preview": "^4.0.17",
     "@vitest/coverage-v8": "4.0.17",
     "@vitest/ui": "^4.0.17",
     "concurrently": "^9.2.1",
