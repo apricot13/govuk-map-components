@@ -1,0 +1,94 @@
+// any dependencies other than govuk base will go here
+@import "../../../node_modules/govuk-frontend/dist/govuk/core/typography";
+@import "../../../node_modules/govuk-frontend/dist/govuk/core/links";
+$selector: loading-spinner;
+
+$spinner-icon-border-width: 12px !default;
+$spinner-icon-highlight-colour: $govuk-brand-colour !default;
+$spinner-icon-background-colour: govuk-colour("light-grey") !default;
+$spinner-icon-size: 80px !default;
+
+@mixin spinner($selector) {
+  @keyframes loading-spinner-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .#{$selector}--active & {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: loading-spinner-rotate 2s linear infinite;
+    }
+  }
+
+  border-color: $spinner-icon-highlight-colour $spinner-icon-background-colour
+    $spinner-icon-background-colour;
+  border-style: solid;
+  border-width: $spinner-icon-border-width;
+  height: $spinner-icon-size;
+  width: $spinner-icon-size;
+  border-radius: 100%;
+}
+
+.#{$selector} {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: govuk-spacing(5);
+
+  > * + * {
+    margin-block-start: govuk-spacing(5);
+  }
+
+  &:empty {
+    margin: 0 !important;
+    padding: 0 !important;
+    height: 0 !important;
+  }
+
+  &__spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > * + * {
+      margin-block-start: govuk-spacing(3);
+    }
+
+    &.#{$selector}__spinner--active {
+      .#{$selector}__pause-button {
+        display: block;
+      }
+      .#{$selector}__pause-message {
+        display: none;
+      }
+    }
+  }
+
+  &__spinner-inner {
+    @include spinner(#{$selector + "__spinner"});
+  }
+
+  &__pause-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+    @extend %govuk-body-s;
+    @extend %govuk-link;
+  }
+
+  &__pause-message {
+    @extend %govuk-body-s;
+  }
+
+  &__message {
+    @extend %govuk-body-l;
+    margin-top: 0;
+    text-align: center;
+  }
+}
