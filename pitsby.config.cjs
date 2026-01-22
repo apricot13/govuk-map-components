@@ -6,7 +6,10 @@ module.exports = {
       collectDocsFrom: "./src/components/",
     },
   ],
-  styles: ["./dist/frontend-components.css"],
+  styles: [
+    "./dist/frontend-components.css",
+    "./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css",
+  ],
   scripts: [
     "./dist/frontend-components.es.js",
     "./dist/frontend-components.umd.js",
