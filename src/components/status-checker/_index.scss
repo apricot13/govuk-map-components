@@ -1,7 +1,7 @@
 // any dependencies other than govuk base will go here
 $selector: status-checker;
 
-.#{status-checker} {
+.#{$selector} {
   // Styles for status checker component
   // &.#{status-checker}--active {
   // }
