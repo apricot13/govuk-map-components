@@ -1,5 +1,5 @@
 module.exports = {
-  name: "MyBox - Example component",
+  name: "Example component",
   description: "Example component that serves as a box element.",
   properties: [
     {
@@ -13,12 +13,12 @@ module.exports = {
     {
       title: "Default",
       description: "An example of the MyBox component with default settings.",
-      template: `<my-box></my-box>`,
+      template: `<div class="example-component"><my-box></my-box></div>`,
     },
     {
       title: "Default",
       description: "An example of the MyBox component with a title.",
-      template: `<p>title</p><my-box></my-box>`,
+      template: `<div class="example-component"><p>title</p><my-box></my-box></div>`,
     },
   ],
 };
