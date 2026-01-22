@@ -1,5 +1,5 @@
 module.exports = {
-  name: "StatusChecker - Status monitoring component",
+  name: "Status checker",
   description: "Component that monitors and displays the status of a job.",
   properties: [
     {
