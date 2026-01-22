@@ -1,4 +1,7 @@
 @import "./../node_modules/govuk-frontend/dist/govuk/base";
 
 // components
+@import "./components/example-component/index";
+@import "./components/loading-spinner/index";
 @import "./components/status-checker/index";
+@import "./components/title/index";
