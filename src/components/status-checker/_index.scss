@@ -1,6 +1,12 @@
 // any dependencies other than govuk base will go here
-@import "../../../node_modules/govuk-frontend/dist/govuk/utilities/visually-hidden";
+$selector: status-checker;
 
-.status-checker {
+.#{status-checker} {
   // Styles for status checker component
+  // &.#{status-checker}--active {
+  // }
+
+  &__alert {
+    @include govuk-visually-hidden();
+  }
 }

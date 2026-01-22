@@ -122,35 +122,33 @@
             <article>
               <section>
                 <header>
-                  <h3>With govuk tag</h3>
-                </header>
-                <article>
-                  <status-checker
-                    job-id="1234"
-                    job-title="Article 4 Direction"
-                    api-path="http://localhost:8081/api/jobs"
-                  >
-                    <strong class="govuk-tag govuk-tag--grey">unknown</strong>
-                  </status-checker>
-                </article>
-              </section>
-              <section>
-                <header>
-                  <h3>Without govuk tag</h3>
+                  <h3>Enhancing plain text</h3>
                 </header>
                 <article>
                   <p>
                     The current status is:
-                    <strong>
-                      <status-checker
-                        job-id="1234"
-                        job-title="Article 4 Direction"
-                        api-path="http://localhost:8081/api/jobs"
-                      >
-                        unknown
-                      </status-checker>
-                    </strong>
+                    <status-checker
+                      job-id="049fbea0-7614-44c9-9d0c-33957bee2fe3"
+                      job-title="Article 4 Direction"
+                      api-path="http://localhost:8081/api/jobs"
+                    >
+                      queued
+                    </status-checker>
                   </p>
+                </article>
+              </section>
+              <section>
+                <header>
+                  <h3>Enhancing single element (govuk tag)</h3>
+                </header>
+                <article>
+                  <status-checker
+                    job-id="049fbea0-7614-44c9-9d0c-33957bee2fe3"
+                    job-title="Article 4 Direction"
+                    api-path="http://localhost:8081/api/jobs"
+                  >
+                    <strong class="govuk-tag govuk-tag--grey">queued</strong>
+                  </status-checker>
                 </article>
               </section>
             </article>
