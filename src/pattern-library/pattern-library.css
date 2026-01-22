@@ -7,3 +7,5 @@
 @import url("./_components--card.css") layer(components);
 @import url("./_components--layout.css") layer(components);
 @import url("./_components--skip-link.css") layer(components);
+
+@import "../../node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css";
