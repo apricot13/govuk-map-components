@@ -1,0 +1,21 @@
+// any dependencies other than govuk base will go here
+$selector: title-component;
+
+.#{$selector} {
+  .govuk-tag {
+    max-width: none;
+
+    @include _govuk-responsive-spacing(2, "margin", "bottom", true);
+  }
+
+  //   .govuk-\!-#{$property}-#{$scale-point} {
+  //   @include _govuk-responsive-spacing($scale-point, $property, "all", true);
+  // }
+
+  // // ... and then an override for each individual direction
+  // @each $direction in $_spacing-directions {
+  //   .govuk-\!-#{$property}-#{$direction}-#{$scale-point} {
+  //     @include _govuk-responsive-spacing($scale-point, $property, $direction, true);
+  //   }
+  // }
+}
