@@ -36,5 +36,9 @@
     "types/*.d.ts",
     "src/components/example-component/example-component.ts"
   ],
-  "exclude": ["src/components/*.doc.js", "src/components/docs/*.doc.js"]
+  "exclude": [
+    "src/components/*.doc.js",
+    "src/components/docs/*.doc.js",
+    "node_modules"
+  ]
 }

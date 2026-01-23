@@ -25,6 +25,7 @@
             <li><a href="#example-component">Example component</a></li>
             <li><a href="#title">Title</a></li>
             <li><a href="#pdf">PDF</a></li>
+            <li><a href="#simple-map">Simple map</a></li>
           </ul>
         </nav>
       </aside>
@@ -199,6 +200,46 @@
             </article>
           </section>
           <!-- end pdf component -->
+
+          <!-- start simple map component -->
+          <section class="component-card" id="simple-map">
+            <header>
+              <h2>Simple map component</h2>
+            </header>
+            <article>
+              <simple-map
+                title="Generated map"
+                publicPath=""
+                basePath=""
+                standalone="false"
+              ></simple-map>
+              <script type="module">
+                const areaData = {
+                  type: "FeatureCollection",
+                  features: [
+                    {
+                      type: "Feature",
+                      properties: {},
+                      geometry: {
+                        coordinates: [
+                          [
+                            [-0.14355876973726822, 51.49391648836419],
+                            [-0.14102432762049943, 51.49391648836419],
+                            [-0.14102432762049943, 51.49940032655593],
+                            [-0.14355876973726822, 51.49940032655593],
+                            [-0.14355876973726822, 51.49391648836419],
+                          ],
+                        ],
+                        type: "Polygon",
+                      },
+                    },
+                  ],
+                };
+                // document.querySelector("simple-map").showFeature(areaData);
+              </script>
+            </article>
+          </section>
+          <!-- end simple map component -->
 
           <!-- use this to see how to next examples -->
           <!-- <section class="component-card" id="css-test">

@@ -52,6 +52,13 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         quietDeps: true,
+        silenceDeprecations: [
+          "slash-div",
+          "if-function",
+          "color-functions",
+          "global-builtin",
+          "import",
+        ],
       },
     },
   },
