@@ -1,6 +1,6 @@
-  {%- from "govuk/components/tag/macro.njk" import govukTag -%}
-  
-  <div class="title-component">
+{%- from "govuk/components/tag/macro.njk" import govukTag -%}
+
+<div class="title-component">
   {% if tag %}
     {{ govukTag({text: tag, classes: 'govuk-tag--grey' }) }}
   {% endif %}
@@ -12,4 +12,4 @@
       <span class="govuk-heading-xl">{{ title }}</span>
     {% endif %}
   </h1>
-  </div>
+</div>

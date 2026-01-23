@@ -1,10 +1,6 @@
- <simple-map
-    title="Generated map"
-    publicPath="{{ publicPath }}"
-    basePath="{{ basePath }}"
-    standalone="{{ standalone }}"
-  ></simple-map>
-  <script type="module">
-    const areaData = {{ jobData.geojson | dump | safe }}
-    document.querySelector('simple-map').showFeature(areaData)
-  </script>
+<simple-map
+  title="Generated map"
+  publicPath="{{ publicPath }}"
+  basePath="{{ basePath }}"
+  standalone="{{ standalone }}"
+></simple-map>
