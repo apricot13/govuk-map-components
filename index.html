@@ -207,36 +207,34 @@
               <h2>Simple map component</h2>
             </header>
             <article>
-              <simple-map
-                title="Generated map"
-                publicPath=""
-                basePath=""
-                standalone="false"
-              ></simple-map>
-              <script type="module">
-                const areaData = {
-                  type: "FeatureCollection",
-                  features: [
-                    {
-                      type: "Feature",
-                      properties: {},
-                      geometry: {
-                        coordinates: [
-                          [
-                            [-0.14355876973726822, 51.49391648836419],
-                            [-0.14102432762049943, 51.49391648836419],
-                            [-0.14102432762049943, 51.49940032655593],
-                            [-0.14355876973726822, 51.49940032655593],
-                            [-0.14355876973726822, 51.49391648836419],
-                          ],
-                        ],
-                        type: "Polygon",
-                      },
-                    },
-                  ],
-                };
-                // document.querySelector("simple-map").showFeature(areaData);
-              </script>
+              <section>
+                <header>
+                  <h3>Toggle disabled</h3>
+                </header>
+                <article>
+                  <simple-map
+                    title="Generated map"
+                    lat="51.501364"
+                    lng="-0.1444649"
+                    zoom="15"
+                  ></simple-map>
+                </article>
+              </section>
+
+              <section>
+                <header>
+                  <h3>Toggle enabled</h3>
+                </header>
+                <article>
+                  <simple-map
+                    title="Generated map"
+                    lat="51.501364"
+                    lng="-0.1444649"
+                    zoom="15"
+                    enableToggle="true"
+                  ></simple-map>
+                </article>
+              </section>
             </article>
           </section>
           <!-- end simple map component -->
