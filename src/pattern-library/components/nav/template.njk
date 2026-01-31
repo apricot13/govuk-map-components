@@ -1,17 +1,12 @@
-
 {% macro linkItem(name, href) %}
-
-    <a href="{{ href }}">
-      {{ name }}
-    </a>
-  
+  <a href="{{ href }}"> {{ name }} </a>
 {% endmacro %}
 
 {% if params.items is defined and params.items|length > 0 %}
-<nav>
-  <ul>
-    {% for item in params.items %}
-      {% set href = item.href | default('#' ~ item.id | default('')) %}
+  <nav>
+    <ul>
+      {% for item in params.items %}
+        {% set href = item.href | default('#' ~ item.id | default('')) %}
         {% if item.visible %}
           <li>
             {{ linkItem(item.name | default('Unnamed Item'), href) }}
@@ -27,7 +22,7 @@
             {% endif %}
           </li>
         {% endif %}
-    {% endfor %}
-  </ul>
-</nav>
+      {% endfor %}
+    </ul>
+  </nav>
 {% endif %}

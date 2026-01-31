@@ -14,7 +14,11 @@
     {% set classes = "govuk-tag--grey" %}
   {% endif %}
 
-  <status-checker job-id="{{ params.id }}" job-title="{{ params.title }}" api-path="{{ params.apiPath }}">
+  <status-checker
+    job-id="{{ params.id }}"
+    job-title="{{ params.title }}"
+    api-path="{{ params.apiPath }}"
+  >
     {{ govukTag({text: params.status | replace("_", " "), classes: classes}) }}
   </status-checker>
 {% endif %}

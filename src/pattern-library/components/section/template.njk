@@ -1,13 +1,15 @@
-
 {% if params.name is defined %}
-  
+
   {% if params.level > 1 %}
     {% set classes = "" %}
   {% else %}
     {% set classes = "component-card" %}
   {% endif %}
   <!-- start {{ params.name }} -->
-  <section class="{{ classes }}" {% if params.id is defined %}id="{{ params.id }}"{% endif %}>
+  <section
+    class="{{ classes }}"
+    {% if params.id is defined %}id="{{ params.id }}"{% endif %}
+  >
     <header>
       {% if params.level == 1 %}
         <h2>{{ params.name }}</h2>
@@ -18,14 +20,9 @@
       {% endif %}
     </header>
     {% if params.description is defined %}
-      <p class="component-card__description">
-        {{ params.description | safe }}
-      </p>
+      <p class="component-card__description">{{ params.description | safe }}</p>
     {% endif %}
-    <article>
-     {{ caller() }}
-    </article>
+    <article>{{ caller() }}</article>
   </section>
   <!-- end {{ params.name }}  -->
-
 {% endif %}

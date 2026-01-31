@@ -1,15 +1,15 @@
 {% from "components/copy-text/macro.njk" import copyText %}
 {% macro item(title, content, copyContent) %}
-<dt>{{ title }}</dt>
-<dd>
-  <p>{{ content }}</p>
-  {% if copyContent %}{{ copyText({copyContent: copyContent}) }}{% endif %}
-</dd>
+  <dt>{{ title }}</dt>
+  <dd>
+    <p>{{ content }}</p>
+    {% if copyContent %}{{ copyText({copyContent: copyContent}) }}{% endif %}
+  </dd>
 {% endmacro %}
 
 <dl class="location-info">
-  {{item('File name', params.filename, params.filename)}}
-  {{item('Address', params.address, params.address)}}
-  {{item('X, Y (Easting, Northing)', params.easting ~ ', ' ~ params.northing, params.easting ~ ',' ~ params.northing)}}
-  {{item('Latitude, Longitude', (params.lat | round(6)) ~ ', ' ~ (params.lng | round(6)), (params.lat | round(6)) ~ ',' ~ (params.lng | round(6)))}}
+  {{ item('File name', params.filename, params.filename) }}
+  {{ item('Address', params.address, params.address) }}
+  {{ item('X, Y (Easting, Northing)', params.easting ~ ', ' ~ params.northing, params.easting ~ ',' ~ params.northing) }}
+  {{ item('Latitude, Longitude', (params.lat | round(6)) ~ ', ' ~ (params.lng | round(6)), (params.lat | round(6)) ~ ',' ~ (params.lng | round(6))) }}
 </dl>
