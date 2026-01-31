@@ -1,0 +1,5 @@
+{% from "components/status-checker/macro.njk" import statusChecker %}
+
+
+{# status options: awaiting_start, in_progress, completed, failed #}
+{{ statusChecker({status: "completed", id: 'completed.json', title: "Article 4 Direction", apiPath: "/"}) }}

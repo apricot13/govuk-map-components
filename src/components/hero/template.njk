@@ -7,15 +7,15 @@
         tag: {
           text: "Alpha"
         },
-        html: feedbackHtml
+        html: params.feedbackHtml
       })
     }}
     <div class="hero__content">
-      {% if title %}
-        <h1 class="hero__title">{{ title }}</h1>
+      {% if params.title %}
+        <h1 class="hero__title">{{ params.title }}</h1>
       {% endif %}
-      {% if lede %}
-        <p class="hero__lede">{{ lede }}</p>
+      {% if params.lede %}
+        <p class="hero__lede">{{ params.lede }}</p>
       {% endif %}
     </div>
   </div>

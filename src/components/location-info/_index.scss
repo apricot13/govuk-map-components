@@ -1,0 +1,29 @@
+// any dependencies other than govuk base will go here
+@import "../../../node_modules/govuk-frontend/dist/govuk/core/typography";
+// @import "../../../node_modules/govuk-frontend/dist/govuk/core/links";
+
+$selector: location-info;
+
+.#{$selector} {
+  dt,
+  dd {
+    @extend %govuk-body-m;
+  }
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin-left: 0;
+    > * + * {
+      margin-top: govuk-spacing(2);
+    }
+  }
+
+  // copy-text {
+  //   @extend %govuk-link;
+  //   color: $govuk-link-colour;
+  //   cursor: pointer;
+  // }
+}

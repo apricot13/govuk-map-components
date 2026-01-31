@@ -1,20 +1,20 @@
 {%- from "govuk/components/tag/macro.njk" import govukTag -%}
-{% if job.status is defined %}
+{% if params.status is defined %}
 
   {% set classes = "" %}
-  {% if job.status == "awaiting_start" %}
+  {% if params.status == "awaiting_start" %}
     {% set classes = "govuk-tag--grey" %}
-  {% elif job.status == "in_progress" %}
+  {% elif params.status == "in_progress" %}
     {% set classes = "govuk-tag--grey" %}
-  {% elif job.status == "completed" %}
+  {% elif params.status == "completed" %}
     {% set classes = "govuk-tag--green" %}
-  {% elif job.status == "failed" %}
+  {% elif params.status == "failed" %}
     {% set classes = "govuk-tag--red" %}
   {% else %}
     {% set classes = "govuk-tag--grey" %}
   {% endif %}
 
-  <status-checker job-id="{{ job.id }}" job-title="{{ job.title }}">
-    {{ govukTag({text: job.status | replace("_", " "), classes: classes}) }}
+  <status-checker job-id="{{ params.id }}" job-title="{{ params.title }}" api-path="{{ params.apiPath }}">
+    {{ govukTag({text: params.status | replace("_", " "), classes: classes}) }}
   </status-checker>
 {% endif %}

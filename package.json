@@ -15,7 +15,10 @@
   "types": "./dist/types/index.d.ts",
   "files": [
     "dist",
-    "types"
+    "types",
+    "src/components",
+    "src/layouts",
+    "src/nunjucks"
   ],
   "scripts": {
     "dev": "npm run build && concurrently 'npm run dev:dev' 'npm run docs:dev'",
@@ -33,6 +36,7 @@
   "devDependencies": {
     "@glorious/pitsby": "^1.37.2",
     "@types/govuk-frontend": "^5.11.0",
+    "@types/nunjucks": "^3.2.6",
     "@vitest/browser-preview": "^4.0.17",
     "@vitest/coverage-v8": "4.0.17",
     "@vitest/ui": "^4.0.17",
@@ -45,6 +49,7 @@
     "husky": "^9.1.7",
     "jiti": "^2.6.1",
     "lint-staged": "^16.2.7",
+    "nunjucks": "^3.2.4",
     "prettier": "^3.8.0",
     "prettier-plugin-jinja-template": "^2.1.0",
     "sass": "^1.97.2",

@@ -1,3 +1,4 @@
+{% if params.title or params.zoom or params.lat or params.lng %}
 <simple-map
   title="{{ params.title }}"
   zoom="{{ params.zoom }}"
@@ -5,3 +6,4 @@
   lng="{{ params.lng }}"
   enableToggle="{{ params.enableToggle | default(false) }}"
 ></simple-map>
+{% endif %}

@@ -1,246 +1,240 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Frontend Map Components</title>
+{% extends "pattern-library/layouts/default.njk" %}
+{% from "pattern-library/components/nav/macro.njk" import patternLibraryNav %}
+{% from "pattern-library/components/section/macro.njk" import patternLibrarySection %}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+{% set allVisible = true %}
+{% set aiNoticeVisible = allVisible | default(true) %}
+{% set entityTasksVisible = allVisible | default(true) %}
+{% set exampleComponentVisible = allVisible | default(true) %}
+{% set copyTextVisible = allVisible | default(true) %}
+{% set extractionListVisible = allVisible | default(true) %}
+{% set heroVisible = allVisible | default(true) %}
+{% set loadingSpinnerVisible = allVisible | default(true) %}
+{% set locationInfoVisible = allVisible | default(true) %}
+{% set pdfVisible = allVisible | default(true) %}
+{% set simpleMapVisible = allVisible | default(true) %}
+{% set statusCheckerVisible = allVisible | default(true) %}
+{% set titleVisible = allVisible | default(true) %}
 
-  <body>
-    <a href="#main-content" class="skip-to-content">Skip to main content</a>
-    <div class="layout">
-      <aside class="layout__aside">
-        <h2>Components</h2>
-        <nav>
-          <ul>
-            <li><a href="#loading-spinner">Loading spinner</a></li>
-            <li><a href="#status-checker">Status checker</a></li>
-            <li><a href="#example-component">Example component</a></li>
-            <li><a href="#title">Title</a></li>
-            <li><a href="#pdf">PDF</a></li>
-            <li><a href="#simple-map">Simple map</a></li>
-          </ul>
-        </nav>
-      </aside>
-      <div class="layout__main flow">
-        <h1>Frontend Components Library</h1>
-        <main class="flow" id="main-content">
-          <!-- start example component -->
-          <section class="component-card" id="example-component">
-            <header>
-              <h2>Example component</h2>
-            </header>
-            <article>
-              <div class="example-component">
-                <my-box></my-box>
-              </div>
-            </article>
-          </section>
-          <!-- end example component -->
+{%
+  set components_old = [
+   {
+    name: "AI notice",
+    description: "A generic AI notice informing users about the use of AI.",
+    id: "ai-notice",
+    visible: aiNoticeVisible | default(true)
+  },
+  {
+    name: "Copy text",
+    description: "Copy text component allows users to copy predefined text to their clipboard with a single click. It supports both styled and unstyled versions for flexible integration.",
+    id: "copy-text",
+    visible: copyTextVisible | default(true),
+    examples: [{name: "Styled", id: "styled", visible: true}, {name: "Unstyled", id: "unstyled", visible: true}]
+  },
+  {
+    name: "Entity tasks",
+    description: "TODO Used after an extraction has been completed to show the user the tasks they need to complete to finalise their entity data.",
+    id: "entity-tasks",
+    visible: entityTasksVisible | default(true)
+  },
+  {
+    name: "Example component",
+    description: "",
+    id: "example-component",
+    visible: exampleComponentVisible | default(true),
+    examples: [{name: "Without props", id: "without-props", visible: true}, {name: "With props", id: "with-props", visible: true}]
+  },
+  {
+    name: "Extraction list",
+    description: "TODO Table showing a list of extractions the user has created.",
+    id: "extraction-list",
+    visible: extractionListVisible | default(true)
+  },
+  {
+    name: "Hero",
+    description: "Hero component for landing pages.",
+    id: "hero",
+    visible: heroVisible | default(true)
+  },
+  {
+    name: "Loading spinner",
+    description: "TODO Loading spinner component shows a loading state while content is being fetched or processed in the background.",
+    id: "loading-spinner",
+    visible: loadingSpinnerVisible | default(true),
+    examples: [{name: "Awaiting start", id: "awaiting-start", visible: true},
+               {name: "In progress", id: "in-progress", visible: true},
+               {name: "Completed", id: "completed", visible: true},
+               {name: "Failed", id: "failed", visible: true}]
+  },
+  {
+    name: "Location info",
+    description: "Location info component shows information about a specific location.",
+    id: "location-info",
+    visible: locationInfoVisible | default(true)
+  },
+  {
+    name: "PDF",
+    description: "PDF component shows an embedded PDF document within the page. Options to toggle visibility.",
+    id: "pdf",
+    visible: pdfVisible | default(true),
+    examples: [{name: "Default", id: "default", visible: true},
+               {name: "Toggle PDF", id: "toggle-pdf", visible: true}]
+  },
+  {
+    name: "Simple map",
+    description: "Simple map component shows a simple map within the page. Options to toggle visibility.",
+    id: "simple-map",
+    visible: simpleMapVisible | default(true),
+    examples: [{name: "Default", id: "default", visible: true},
+               {name: "Toggle map", id: "toggle-map", visible: true}]
+  },
+  {
+    name: "Status checker",
+    description: "Status checker component shows the status of a job or process.",
+    id: "status-checker",
+    visible: statusCheckerVisible | default(true),
+    examples: [{name: "Plain text", id: "plain-text", visible: true},
+               {name: "GovUk tag", id: "govuk-tag", visible: true}]
+  },
+  {
+    name: "Title",
+    description: "Title component shows a title, caption and optional tag representing the current page data type tree, tree protection zone etc.",
+    id: "title",
+    visible: titleVisible | default(true),
+    examples: [{name: "title", id: "title", visible: true},
+               {name: "title with caption", id: "title-caption", visible: true},
+               {name: "title with caption and tag", id: "title-caption-tag", visible: true}]
+  }]
+%}
 
-          <!-- start loading spinner component -->
-          <section class="component-card" id="loading-spinner">
-            <header>
-              <h2>Loading spinner</h2>
-            </header>
-            <article>
-              <!-- loading spinner loading -->
-              <section>
-                <header>
-                  <h3>Loading spinner (loading)</h3>
-                </header>
-                <article>
-                  <loading-spinner>
-                    <p class="govuk-body-l">
-                      Your PDF is being processed. This may take a few minutes.
-                      Please refresh the page to check the status.
-                    </p>
-                  </loading-spinner>
-                </article>
-              </section>
+{%
+  set filters_old = [
+   {
+    name: "date",
+    description: "Formats a date string into a specified format.",
+    id: "date",
+    visible: true,
+    examples: [{name: "Full date time", id: "full-date-time", visible: true},
+               {name: "Date slashes", id: "date-slashes", visible: true},
+               {name: "Date YMD", id: "date-ymd", visible: true}]
+  },
+  {
+    name: "docType",
+    description: "Returns a human-readable document type based on a given code.",
+    id: "docType",
+    visible: true,
+    examples: [{name: "article4direction", id: "article4direction", visible: true},
+               {name: "article4directionarea", id: "article4directionarea", visible: true},
+               {name: "conservationarea", id: "conservationarea", visible: true},
+               {name: "treepreservationorder", id: "treepreservationorder", visible: true},
+               {name: "tree", id: "tree", visible: true},
+               {name: "treepreservationzone", id: "treepreservationzone", visible: true}]
+  },
+  {
+    name: "entityTitle",
+    description: "Returns the singular or plural title for a given entity type. Also returns the entity id as well.",
+    id: "entityTitle",
+    visible: true,
+    examples: [{name: "article4direction", id: "article4direction", visible: true},
+               {name: "article4directionarea", id: "article4directionarea", visible: true},
+               {name: "conservationarea", id: "conservationarea", visible: true},
+               {name: "treepreservationorder", id: "treepreservationorder", visible: true},
+               {name: "tree", id: "tree", visible: true},
+               {name: "treepreservationzone", id: "treepreservationzone", visible: true}]
+  },
+  {
+    name: "filterBy",
+    description: "Finds and returns all objects in an array where the specified key matches the given value.",
+    id: "filterBy",
+    visible: true
+  },
+  {
+    name: "sourceFile",
+    description: "Converts localstack to localhost in a given URL string.",
+    id: "sourceFile",
+    visible: true
+  }]
+%}
 
-              <!-- loading spinner loaded -->
-              <section>
-                <header>
-                  <h3>Loading spinner (loaded)</h3>
-                </header>
-                <article>
-                  <loading-spinner
-                    fetch-url="http://localhost:8081/api/jobs/049fbea0-7614-44c9-9d0c-33957bee2fe3"
-                  >
-                    <p class="govuk-body-l">
-                      Your PDF is being processed. This may take a few minutes.
-                      Please refresh the page to check the status.
-                    </p>
-                  </loading-spinner>
-                </article>
-              </section>
-            </article>
-          </section>
-          <!-- end loading spinner component -->
+{% block sidebar %}
+  <h2>Components</h2>
+  {{ patternLibraryNav({items: components}) }}
 
-          <!-- start status checker component -->
-          <section class="component-card" id="status-checker">
-            <header>
-              <h2>StatusChecker</h2>
-            </header>
-            <article>
-              <!-- start status checker example: enhancing plain text -->
-              <section>
-                <header>
-                  <h3>Enhancing plain text</h3>
-                </header>
-                <article>
-                  <p>
-                    The current status is:
-                    <status-checker
-                      job-id="049fbea0-7614-44c9-9d0c-33957bee2fe3"
-                      job-title="Article 4 Direction"
-                      api-path="http://localhost:8081/api/jobs"
-                    >
-                      queued
-                    </status-checker>
-                  </p>
-                </article>
-              </section>
-              <!-- end status checker example: enhancing plain text -->
+  <br />
+  <br />
 
-              <!-- start status checker example: enhancing single element (govuk tag) -->
-              <section>
-                <header>
-                  <h3>Enhancing single element (govuk tag)</h3>
-                </header>
-                <article>
-                  <status-checker
-                    job-id="049fbea0-7614-44c9-9d0c-33957bee2fe3"
-                    job-title="Article 4 Direction"
-                    api-path="http://localhost:8081/api/jobs"
-                  >
-                    <strong class="govuk-tag govuk-tag--grey">queued</strong>
-                  </status-checker>
-                </article>
-              </section>
-              <!-- end status checker example: enhancing single element (govuk tag) -->
-            </article>
-          </section>
-          <!-- end status checker component -->
+  <h2>Filters</h2>
+  {{ patternLibraryNav({items: filters}) }}
+{% endblock %}
 
-          <!-- start title component -->
-          <section class="component-card" id="title">
-            <header>
-              <h2>Title component</h2>
-            </header>
-            <article>
-              <!-- title component just title -->
-              <section>
-                <header>
-                  <h2>Just title</h2>
-                </header>
-                <article>
-                  <div class="title-component">
-                    <h1>
-                      <span class="govuk-heading-xl">Title</span>
-                    </h1>
-                  </div>
-                </article>
-              </section>
+{% block content %}
 
-              <!-- title component title and caption -->
-              <section>
-                <header>
-                  <h2>Title and caption</h2>
-                </header>
-                <article>
-                  <div class="title-component">
-                    <h1>
-                      <span class="govuk-caption-xl">Caption</span>
-                      <span class="govuk-heading-xl">Title</span>
-                    </h1>
-                  </div>
-                </article>
-              </section>
+  {% for component in components %}
+    {% if component.visible %}
+      {%
+        call patternLibrarySection({
+          name: component.name,
+          id: component.id,
+          description: component.description,
+          level: 1
+        })
+      %}
+        {% if component.examples is defined %}
+          {% for example in component.examples %}
+            {% if example.visible %}
+              {%
+                call patternLibrarySection({
+                  name: example.name,
+                  id: component.id + "--" + example.id,
+                  description: example.description,
+                  level: 2
+                })
+              %}
+                {%- include "./components/" + component.id + "/examples/" + example.id + ".njk" ignore missing -%}
+              {% endcall %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {%- include "./components/" + component.id + "/example.njk" ignore missing -%}
+        {% endif %}
+      {% endcall %}
+    {% endif %}
+  {% endfor %}
 
-              <!-- title component title and caption and tag-->
-              <section>
-                <header>
-                  <h2>Title and caption</h2>
-                </header>
-                <article>
-                  <div class="title-component">
-                    <strong class="govuk-tag govuk-tag--grey">tag</strong>
-                    <h1>
-                      <span class="govuk-caption-xl">Caption</span>
-                      <span class="govuk-heading-xl">Title</span>
-                    </h1>
-                  </div>
-                </article>
-              </section>
-            </article>
-          </section>
-          <!-- end title component -->
+  {% for filter in filters %}
+    {% if filter.visible %}
+      {%
+        call patternLibrarySection({
+          name: filter.name,
+          id: filter.id,
+          description: filter.description,
+          level: 1
+        })
+      %}
+        {% if filter.examples is defined %}
+          {% for example in filter.examples %}
+            {% if example.visible %}
+              {%
+                call patternLibrarySection({
+                  name: example.name,
+                  id: filter.id + "--" + example.id,
+                  description: example.description,
+                  level: 2
+                })
+              %}
+                {%- include "./nunjucks/filters/" + filter.id + "/examples/" + example.id + ".njk" ignore missing -%}
+              {% endcall %}
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          {%- include "./nunjucks/filters/" + filter.id + "/example.njk" ignore missing -%}
+        {% endif %}
+      {% endcall %}
+    {% endif %}
+  {% endfor %}
 
-          <!-- start pdf component -->
-          <section class="component-card" id="pdf">
-            <header>
-              <h2>PDF component</h2>
-            </header>
-            <article>
-              <pdf-component
-                title="Uploaded pdf"
-                url="#"
-                publicPath="#"
-              ></pdf-component>
-            </article>
-          </section>
-          <!-- end pdf component -->
-
-          <!-- start simple map component -->
-          <section class="component-card" id="simple-map">
-            <header>
-              <h2>Simple map component</h2>
-            </header>
-            <article>
-              <section>
-                <header>
-                  <h3>Toggle disabled</h3>
-                </header>
-                <article>
-                  <simple-map
-                    title="Generated map"
-                    lat="51.501364"
-                    lng="-0.1444649"
-                    zoom="15"
-                  ></simple-map>
-                </article>
-              </section>
-
-              <section>
-                <header>
-                  <h3>Toggle enabled</h3>
-                </header>
-                <article>
-                  <simple-map
-                    title="Generated map"
-                    lat="51.501364"
-                    lng="-0.1444649"
-                    zoom="15"
-                    enableToggle="true"
-                  ></simple-map>
-                </article>
-              </section>
-            </article>
-          </section>
-          <!-- end simple map component -->
-
-          <!-- use this to see how to next examples -->
-          <!-- <section class="component-card" id="css-test">
+  <!-- use this to see how to next examples -->
+  <!-- <section class="component-card" id="css-test">
             <header>
               <h2>Heading lv 2</h2>
             </header>
@@ -317,14 +311,4 @@
               </section>
             </article>
           </section> -->
-        </main>
-      </div>
-    </div>
-
-    <script
-      type="module"
-      src="/src/pattern-library/pattern-library.ts"
-    ></script>
-    <script type="module" src="/src/index.ts"></script>
-  </body>
-</html>
+{% endblock %}

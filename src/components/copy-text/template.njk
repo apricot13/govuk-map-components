@@ -1,0 +1,6 @@
+<copy-text 
+    text="{{ params.copyContent }}" 
+    label="{{ params.label | default("Copy text to clipboard") }}" 
+    feedback="{{ params.feedback | default("Copied!") }}" styled="{{ params.styled | default(true) }}">
+        {{ params.instructions | default("Copy") }}
+</copy-text>

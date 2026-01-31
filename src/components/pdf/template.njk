@@ -1,9 +1,7 @@
-{# The version of the map that supports feature collection and no editing #}
-
-{% if job.source_file_download_url %}
-  <pdf-component
-    title="Uploaded pdf"
-    url="{{ job.source_file_download_url | sourceFile or ' ' }}"
-    publicPath="{{ publicPath }}"
-  ></pdf-component>
+{% if params.url %}
+  <view-pdf
+    title="{{ params.title }}"
+    url="{{ params.url }}"
+    enableToggle="{{ params.enableToggle | default(false) }}"
+  ></view-pdf>
 {% endif %}
