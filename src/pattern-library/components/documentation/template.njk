@@ -1,7 +1,7 @@
 {% from "pattern-library/components/section/macro.njk" import patternLibrarySection %}
 
 {% for item in params.type %}
-  {% set exampleFolderPath = params.folderRoot + item.id + "/" + "examples/"  %}
+  {% set exampleFolderPath = params.folderRoot + item.id + "/" + "examples/" %}
   {% if item.visible %}
     {%
       call patternLibrarySection({
