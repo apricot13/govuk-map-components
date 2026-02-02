@@ -26,10 +26,14 @@ concurrency:
 
 
 jobs:
-
-  setup: 
+  build-gh-pages:
     name: Build github pages
     runs-on: ubuntu-latest
+
+    needs: setup
+
+    environment:
+      name: github-pages
 
     steps:
       - name: Checkout code
@@ -48,15 +52,7 @@ jobs:
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-  build-gh-pages:
-    name: Build github pages
-    runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
       - name: Build docs
         run: pnpm run pitsby:build
 
