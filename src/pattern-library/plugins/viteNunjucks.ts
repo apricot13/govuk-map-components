@@ -3,6 +3,7 @@ import type { HmrContext, IndexHtmlTransformResult, Plugin } from "vite";
 import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
 import docs from "../docs";
 import pitsbyDocToNunjucksDoc from "../utils/pitsbyDocToNunjucksDoc";
+import testData from "../../test-data";
 
 /**
  * Vite plugin for Nunjucks template rendering and hot-reloading.
@@ -26,6 +27,11 @@ export default (): Plugin => {
   const filters = Object.values(docs.filters || {});
   env.addGlobal("components", components.map(pitsbyDocToNunjucksDoc));
   env.addGlobal("filters", filters.map(pitsbyDocToNunjucksDoc));
+
+  Object.keys(testData || {}).forEach(key => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    env.addGlobal(`testData${key}`, (testData as Record<string, any>)[key]);
+  });
 
   return {
     name: "nunjucks",
