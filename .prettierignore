@@ -7,3 +7,4 @@ node_modules
 pitsby
 .*
 pnpm-lock.yaml
+pitsbyDocs

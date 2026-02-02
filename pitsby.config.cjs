@@ -3,7 +3,7 @@ module.exports = {
   projects: [
     {
       engine: "vanilla",
-      collectDocsFrom: "./src/components/",
+      collectDocsFrom: "./pitsbyDocs/",
     },
   ],
   styles: [

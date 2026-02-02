@@ -1,3 +1,11 @@
+export interface NunjucksDocumentation {
+  name: string;
+  description: string;
+  id: string;
+  visible: boolean;
+  examples?: NunjucksDocumentation[];
+}
+
 export interface PitsbyDocumentation {
   name: string;
   description: string;
@@ -15,20 +23,8 @@ export interface PitsbyExample {
   visible?: boolean;
 }
 
-export interface Docs {
-  components: PitsbyDocumentation[];
-  filters: PitsbyDocumentation[];
-}
-
-export interface Documentation {
-  components: NunjucksDocumentation[];
-  filters: NunjucksDocumentation[];
-}
-
-export interface NunjucksDocumentation {
-  name: string;
-  description: string;
-  id: string;
-  visible: boolean;
-  examples?: NunjucksDocumentation[];
-}
+export type DocumentationType = "components" | "filters";
+export type DocumentationName = string;
+export type Docs = {
+  [K in DocumentationType]: Record<DocumentationName, PitsbyDocumentation>;
+};

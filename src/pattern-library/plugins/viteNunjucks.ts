@@ -1,7 +1,8 @@
 import * as path from "path";
 import type { HmrContext, IndexHtmlTransformResult, Plugin } from "vite";
-import buildNunjucksExamples from "../utils/buildNunjucksExamples";
 import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
+import docs from "../docs";
+import pitsbyDocToNunjucksDoc from "../utils/pitsbyDocToNunjucksDoc";
 
 /**
  * Vite plugin for Nunjucks template rendering and hot-reloading.
@@ -21,9 +22,10 @@ import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
  */
 export default (): Plugin => {
   const env = createNunjucksEnvironment();
-  const { components, filters } = buildNunjucksExamples();
-  env.addGlobal("components", components);
-  env.addGlobal("filters", filters);
+  const components = Object.values(docs.components || {});
+  const filters = Object.values(docs.filters || {});
+  env.addGlobal("components", components.map(pitsbyDocToNunjucksDoc));
+  env.addGlobal("filters", filters.map(pitsbyDocToNunjucksDoc));
 
   return {
     name: "nunjucks",
