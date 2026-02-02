@@ -1,15 +1,15 @@
 {%- from "govuk/components/tag/macro.njk" import govukTag -%}
 
 <div class="title-component">
-  {% if tag %}
-    {{ govukTag({text: tag, classes: 'govuk-tag--grey' }) }}
+  {% if params.tag %}
+    {{ govukTag({text: params.tag, classes: 'govuk-tag--grey' }) }}
   {% endif %}
   <h1>
-    {% if caption %}
-      <span class="govuk-caption-xl">{{ caption }}</span>
+    {% if params.caption %}
+      <span class="govuk-caption-xl">{{ params.caption }}</span>
     {% endif %}
-    {% if title %}
-      <span class="govuk-heading-xl">{{ title }}</span>
+    {% if params.title %}
+      <span class="govuk-heading-xl">{{ params.title }}</span>
     {% endif %}
   </h1>
 </div>

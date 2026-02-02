@@ -1,0 +1,65 @@
+name: Release and deploy
+
+# when a release is made with the tag pattern release-v*.*.*
+# on:
+#   release:
+#     tags: ["release-v*.*.*"]
+
+# on:
+#   push:
+
+  # Allows you to run this workflow manually from the Actions tab
+  # workflow_dispatch:
+
+jobs:
+  build-gh-pages:
+    name: Build github pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Build docs
+        run: pnpm run pitsby:build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./pitsby
+
+      - name: Deploy artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      # - name: Prepare tag
+      #   id: prepare_tag
+      #   if: startsWith(github.ref, 'refs/tags/')
+      #   run: |
+      #     echo "DEPLOY_TAG_NAME=deploy-${TAG_NAME}" >> "${GITHUB_OUTPUT}"
+
+      # - name: Deploy
+      #   uses: peaceiris/actions-gh-pages@v4
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     publish_dir: ./public
+      #     tag_name: ${{ steps.prepare_tag.outputs.DEPLOY_TAG_NAME }}
+      #     tag_message: 'Deployment ${{ github.ref_name }}'
+        

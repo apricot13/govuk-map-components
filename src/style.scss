@@ -1,4 +1,6 @@
-$govuk-font-family: system-ui, sans-serif !default;
+$govuk-font-family: "Inter", system-ui, sans-serif !default;
+$govuk-include-default-font-face: false !default;
+$govuk-rebrand: true !default;
 // $govuk-assets-path: "/assets/" !default;
 
 @import "./../node_modules/govuk-frontend/dist/govuk/base";
@@ -13,3 +15,6 @@ $govuk-font-family: system-ui, sans-serif !default;
 @import "./components/status-checker/index";
 @import "./components/title/index";
 @import "./components/simple-map/index";
+@import "./components/pdf/index";
+@import "./components/location-info/index";
+@import "./components/copy-text/index";

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Frontend Map Components</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div class="layout">
+      <aside class="layout__aside">
+        <div class="layout__aside__inner">
+          {% block sidebar %}
+          {% endblock %}
+        </div>
+      </aside>
+      <div class="layout__main flow">
+        <h1>Frontend Components Library</h1>
+        <main class="flow" id="main-content">
+          {% block content %}
+          {% endblock %}
+        </main>
+      </div>
+    </div>
+
+    <script
+      type="module"
+      src="/src/pattern-library/pattern-library.ts"
+    ></script>
+    <script type="module" src="/src/index.ts"></script>
+  </body>
+</html>

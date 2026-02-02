@@ -1,0 +1,107 @@
+{% if params.name is defined %}
+
+  {% if params.level > 1 %}
+    {% set classes = "" %}
+  {% else %}
+    {% set classes = "component-card" %}
+  {% endif %}
+  <!-- start {{ params.name }} -->
+  <section
+    class="{{ classes }}"
+    {% if params.id is defined %}id="{{ params.id }}"{% endif %}
+  >
+    <header>
+      {% if params.level == 1 %}
+        <h2>{{ params.name }}</h2>
+      {% elif params.level == 2 %}
+        <h3>{{ params.name }}</h3>
+      {% elif params.level == 3 %}
+        <h4>{{ params.name }}</h4>
+      {% endif %}
+    </header>
+    {% if params.description is defined %}
+      <p class="component-card__description">{{ params.description | safe }}</p>
+    {% endif %}
+    <article>{{ caller() }}</article>
+  </section>
+  <!-- end {{ params.name }}  -->
+{% endif %}
+
+<!-- use this to see how to next examples -->
+<!-- <section class="component-card" id="css-test">
+            <header>
+              <h2>Heading lv 2</h2>
+            </header>
+            <article>
+              <section>
+                <header>
+                  <h3>Heading lv 3</h3>
+                </header>
+                <article>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                </article>
+              </section>
+              <section>
+                <header>
+                  <h3>Heading lv 3</h3>
+                </header>
+                <article>
+                  <my-box></my-box>
+                </article>
+              </section>
+              <section>
+                <header>
+                  <h3>Heading lv 3</h3>
+                </header>
+                <article>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                  <section>
+                    <header>
+                      <h4>Heading lv 4</h4>
+                    </header>
+                    <article>
+                      <my-box></my-box>
+                    </article>
+                  </section>
+                </article>
+              </section>
+            </article>
+          </section> -->

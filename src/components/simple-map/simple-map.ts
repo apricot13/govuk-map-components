@@ -49,9 +49,9 @@ export class SimpleMap extends HTMLElement {
   #render() {
     this.innerHTML = `
       <style>
-        .simple-map__top:has(#show-map:not(:checked)) ~ .simple-map__simple-map { display: none; }
-        .simple-map__top:has(#show-map:checked) ~ .simple-map__simple-map { display: block; }
-        .simple-map .simple-map__simple-map { width: 100%; }
+        .simple-map__top:has(#show-map:not(:checked)) ~ .simple-map__container { display: none; }
+        .simple-map__top:has(#show-map:checked) ~ .simple-map__container { display: block; }
+        .simple-map .simple-map__container { width: 100%; }
         .simple-map .simple-map__map, .simple-map #map { border: 1px solid #000; width: 100%; height: 400px; }
       </style>
       <div class="simple-map">
@@ -59,7 +59,7 @@ export class SimpleMap extends HTMLElement {
           <h2 class="govuk-heading-m">${this.getAttribute("title")}</h2>
           ${this.#renderActions()}
         </div>
-        <div class="simple-map__simple-map">
+        <div class="simple-map__container">
           <div id="map" class="simple-map__map"></div>
         </div>
       </div>
@@ -140,15 +140,15 @@ export class SimpleMap extends HTMLElement {
     });
   }
 
-  attributeChangedCallback(
-    name: string,
-    oldValue: string | null,
-    newValue: string | null
-  ) {
-    console.log(
-      `Attribute ${name} has changed from ${oldValue} to ${newValue}.`
-    );
-  }
+  // attributeChangedCallback(
+  //   name: string,
+  //   oldValue: string | null,
+  //   newValue: string | null
+  // ) {
+  //   console.log(
+  //     `Attribute ${name} has changed from ${oldValue} to ${newValue}.`
+  //   );
+  // }
 }
 
 customElements.define("simple-map", SimpleMap);

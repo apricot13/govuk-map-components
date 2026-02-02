@@ -29,6 +29,10 @@
 
       > fieldset {
         display: block;
+
+        legend {
+          display: none;
+        }
       }
       .govuk-label {
         max-width: fit-content;
@@ -37,4 +41,4 @@
   }
 }
 
-@include container-apply("map-container");
+@include container-apply("view-pdf");

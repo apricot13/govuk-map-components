@@ -11,11 +11,7 @@
 
   $govuk-hero-vertical-spacing-value: 2;
 
-  @include _govuk-rebrand(
-    "background",
-    $from: $govuk-hero-background,
-    $to: $govuk-hero-rebrand-background
-  );
+  background: $govuk-hero-rebrand-background;
 
   &__container {
     @include govuk-clearfix;
@@ -24,16 +20,16 @@
     padding-top: govuk-spacing($govuk-hero-vertical-spacing-value);
     border-bottom: $govuk-hero-border-width solid $govuk-hero-border-color;
 
-    @include _govuk-rebrand {
-      // Remove the space allocated to the blue bar
-      margin-bottom: 0;
+    // @include _govuk-rebrand {
+    // Remove the space allocated to the blue bar
+    margin-bottom: 0;
 
-      // Remove padding as the child elements are now responsible for spacing
-      padding-top: 0;
+    // Remove padding as the child elements are now responsible for spacing
+    padding-top: 0;
 
-      // Remove the blue bar
-      border-bottom: none;
-    }
+    // Remove the blue bar
+    border-bottom: none;
+    // }
   }
 
   &__content {

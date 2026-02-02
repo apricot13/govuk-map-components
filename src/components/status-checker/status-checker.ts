@@ -324,9 +324,7 @@ export class StatusChecker extends HTMLElement {
     alert.setAttribute("aria-live", "polite");
     alert.setAttribute("aria-busy", "false");
     alert.setAttribute("role", "alert");
-    alert.textContent = `${this.#jobTitle ?? "Job"} is ${
-      this.#currentStatus?.trim() ?? "unknown"
-    }`;
+    alert.textContent = `${this.#jobTitle ?? "Job"} is ${this.#currentStatus?.trim() ?? "unknown"}`;
     return alert;
   }
 
