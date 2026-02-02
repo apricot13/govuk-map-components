@@ -2,6 +2,10 @@
   "name": "frontend-components",
   "private": true,
   "version": "0.0.0",
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=25.0.0 <26"
+  },
   "type": "module",
   "browser": "./dist/frontend-components.umd.js",
   "module": "./dist/frontend-components.es.js",
