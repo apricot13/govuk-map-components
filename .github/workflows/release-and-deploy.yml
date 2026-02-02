@@ -30,8 +30,6 @@ jobs:
     name: Build github pages
     runs-on: ubuntu-latest
 
-    needs: setup
-
     environment:
       name: github-pages
 
