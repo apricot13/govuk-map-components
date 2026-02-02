@@ -1,6 +1,6 @@
 import * as path from "path";
 import type { HmrContext, IndexHtmlTransformResult, Plugin } from "vite";
-import buildNunjucksExamples from "../setup-nunjucks/buildNunjucksExamples";
+import buildNunjucksExamples from "../utils/buildNunjucksExamples";
 import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
 
 /**

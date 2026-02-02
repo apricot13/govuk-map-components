@@ -15,6 +15,16 @@ export interface PitsbyExample {
   visible?: boolean;
 }
 
+export interface Docs {
+  components: PitsbyDocumentation[];
+  filters: PitsbyDocumentation[];
+}
+
+export interface Documentation {
+  components: NunjucksDocumentation[];
+  filters: NunjucksDocumentation[];
+}
+
 export interface NunjucksDocumentation {
   name: string;
   description: string;

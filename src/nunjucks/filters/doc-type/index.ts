@@ -1,4 +1,4 @@
-import { supportedTypes } from "../entityTitle";
+import { supportedTypes } from "../entity-title";
 
 function docType(type: string) {
   const types: Record<string, string> = Object.fromEntries(

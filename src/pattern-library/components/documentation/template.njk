@@ -1,0 +1,36 @@
+{% from "pattern-library/components/section/macro.njk" import patternLibrarySection %}
+
+{% for item in params.type %}
+  {% set exampleFolderPath = params.folderRoot + item.id + "/" + "examples/"  %}
+  {% if item.visible %}
+    {%
+      call patternLibrarySection({
+        name: item.name,
+        id: item.id,
+        description: item.description,
+        level: 1
+      })
+    %}
+      {% if item.examples is defined %}
+        {% for example in item.examples %}
+          {% if item.examples | length > 1 %}
+            {% if example.visible %}
+              {%
+                call patternLibrarySection({
+                  name: example.name,
+                  id: item.id + "--" + example.id,
+                  description: example.description,
+                  level: 2
+                })
+              %}
+                {%- include exampleFolderPath + example.id + ".njk" ignore missing -%}
+              {% endcall %}
+            {% endif %}
+          {% else %}
+            {%- include exampleFolderPath + item.examples[0].id + ".njk" ignore missing -%}
+          {% endif %}
+        {% endfor %}
+      {% endif %}
+    {% endcall %}
+  {% endif %}
+{% endfor %}

@@ -1,7 +1,7 @@
-import buildPitsbyExamples from "../../../pattern-library/documentation/buildPitsbyExamples";
+import buildPitsbyExamples from "../../../pattern-library/utils/buildPitsbyExamples";
 const __dirname = new URL(".", import.meta.url).pathname;
 export default {
-  name: "Date",
+  name: "date",
   description: "Formats a date string into a specified format.",
   properties: [
     {

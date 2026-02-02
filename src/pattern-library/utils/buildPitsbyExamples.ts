@@ -1,7 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
-import findExampleFiles from "../utils/findExampleFiles";
-import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
+import findExampleFiles from "./findExampleFiles";
+import createNunjucksEnvironment from "./createNunjucksEnvironment";
 import type { PitsbyExample } from "../types";
 
 /**
@@ -26,7 +26,9 @@ const buildPitsbyExamples = (dir: string): PitsbyExample[] => {
     const html = fs.readFileSync(file, "utf-8");
     const template = env.renderString(html, {});
     // Use filename (without extension) as title
-    const title = path.basename(file, ".njk");
+    let title = path.basename(file, ".njk");
+    title = title.slice(0, 1).toUpperCase() + title.slice(1);
+    title = title.replace(/-/g, " ");
     return { title, template };
   });
   return result;

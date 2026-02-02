@@ -10,7 +10,8 @@
         {% if item.visible %}
           <li>
             {{ linkItem(item.name | default('Unnamed Item'), href) }}
-            {% if item.examples is defined and item.examples|length > 0 %}
+            {# only show a link if there are multiple examples #}
+            {% if item.examples is defined and item.examples|length > 1 %}
               <ul>
                 {% for example in item.examples %}
                   {% set exampleHref = example.href | default(example.id | default('')) %}

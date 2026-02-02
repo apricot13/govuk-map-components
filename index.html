@@ -1,6 +1,6 @@
 {% extends "pattern-library/layouts/default.njk" %}
 {% from "pattern-library/components/nav/macro.njk" import patternLibraryNav %}
-{% from "pattern-library/components/section/macro.njk" import patternLibrarySection %}
+{% from "pattern-library/components/documentation/macro.njk" import patternLibraryDocumentation %}
 
 {% block sidebar %}
   <h2>Components</h2>
@@ -14,68 +14,6 @@
 {% endblock %}
 
 {% block content %}
-
-  {% for component in components %}
-    {% if component.visible %}
-      {%
-        call patternLibrarySection({
-          name: component.name,
-          id: component.id,
-          description: component.description,
-          level: 1
-        })
-      %}
-        {% if component.examples is defined %}
-          {% for example in component.examples %}
-            {% if example.visible %}
-              {%
-                call patternLibrarySection({
-                  name: example.name,
-                  id: component.id + "--" + example.id,
-                  description: example.description,
-                  level: 2
-                })
-              %}
-                {%- include "./components/" + component.id + "/examples/" + example.id + ".njk" ignore missing -%}
-              {% endcall %}
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {%- include "./components/" + component.id + "/example.njk" ignore missing -%}
-        {% endif %}
-      {% endcall %}
-    {% endif %}
-  {% endfor %}
-
-  {% for filter in filters %}
-    {% if filter.visible %}
-      {%
-        call patternLibrarySection({
-          name: filter.name,
-          id: filter.id,
-          description: filter.description,
-          level: 1
-        })
-      %}
-        {% if filter.examples is defined %}
-          {% for example in filter.examples %}
-            {% if example.visible %}
-              {%
-                call patternLibrarySection({
-                  name: example.name,
-                  id: filter.id + "--" + example.id,
-                  description: example.description,
-                  level: 2
-                })
-              %}
-                {%- include "./nunjucks/filters/" + filter.id + "/examples/" + example.id + ".njk" ignore missing -%}
-              {% endcall %}
-            {% endif %}
-          {% endfor %}
-        {% else %}
-          {%- include "./nunjucks/filters/" + filter.id + "/example.njk" ignore missing -%}
-        {% endif %}
-      {% endcall %}
-    {% endif %}
-  {% endfor %}
+  {{ patternLibraryDocumentation({type: components, folderRoot: "components/"}) }}
+  {{ patternLibraryDocumentation({type: filters, folderRoot: "nunjucks/filters/"}) }}
 {% endblock %}

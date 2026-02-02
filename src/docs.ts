@@ -1,20 +1,43 @@
-// components
-export * as "ai-notice" from "./components/ai-notice/ai-notice.doc";
-export * as "copy-text" from "./components/copy-text/copy-text.doc";
-export * as "entity-tasks" from "./components/entity-tasks/entity-tasks.doc";
-export * as "example-component" from "./components/example-component/example-component.doc";
-export * as "extraction-list" from "./components/extraction-list/extraction-list.doc";
-export * as "hero" from "./components/hero/hero.doc";
-export * as "loading-spinner" from "./components/loading-spinner/loading-spinner.doc";
-export * as "location-info" from "./components/location-info/location-info.doc";
-export * as "pdf" from "./components/pdf/pdf.doc";
-export * as "simple-map" from "./components/simple-map/simple-map.doc";
-export * as "status-checker" from "./components/status-checker/status-checker.doc";
-export * as "title" from "./components/title/title.doc";
+import type { Docs } from "./pattern-library/types";
 
-// filters
-export * as "date" from "./nunjucks/filters/date/date.doc";
-export * as "docType" from "./nunjucks/filters/docType/docType.doc";
-export * as "entityTitle" from "./nunjucks/filters/entityTitle/entityTitle.doc";
-export * as "filterBy" from "./nunjucks/filters/filterBy/filterBy.doc";
-export * as "sourceFile" from "./nunjucks/filters/sourceFile/sourceFile.doc";
+// Import all component docs
+import aiNotice from "./components/ai-notice/ai-notice.doc";
+import copyText from "./components/copy-text/copy-text.doc";
+import entityTasks from "./components/entity-tasks/entity-tasks.doc";
+import exampleComponent from "./components/example-component/example-component.doc";
+import extractionList from "./components/extraction-list/extraction-list.doc";
+import hero from "./components/hero/hero.doc";
+import loadingSpinner from "./components/loading-spinner/loading-spinner.doc";
+import locationInfo from "./components/location-info/location-info.doc";
+import pdf from "./components/pdf/pdf.doc";
+import simpleMap from "./components/simple-map/simple-map.doc";
+import statusChecker from "./components/status-checker/status-checker.doc";
+import title from "./components/title/title.doc";
+
+// Import all filter docs
+import date from "./nunjucks/filters/date/date.doc";
+import docType from "./nunjucks/filters/doc-type/docType.doc";
+import entityTitle from "./nunjucks/filters/entity-title/entityTitle.doc";
+import filterBy from "./nunjucks/filters/filter-by/filterBy.doc";
+import sourceFile from "./nunjucks/filters/source-file/sourceFile.doc";
+
+// Export as a single object
+const documentation: Docs = {
+  components: [
+    aiNotice,
+    copyText,
+    entityTasks,
+    exampleComponent,
+    extractionList,
+    hero,
+    loadingSpinner,
+    locationInfo,
+    pdf,
+    simpleMap,
+    statusChecker,
+    title,
+  ],
+  filters: [date, docType, entityTitle, filterBy, sourceFile],
+};
+
+export default documentation;
