@@ -1,10 +1,26 @@
 import * as path from "path";
 import type { HmrContext, IndexHtmlTransformResult, Plugin } from "vite";
-import buildNunjucksExamples from "./buildNunjucksExamples";
-import setupNunjucks from "./setupNunjucks";
+import buildNunjucksExamples from "../setup-nunjucks/buildNunjucksExamples";
+import createNunjucksEnvironment from "../utils/createNunjucksEnvironment";
 
+/**
+ * Vite plugin for Nunjucks template rendering and hot-reloading.
+ *
+ * - Sets up a Nunjucks environment with custom components and filters.
+ * - Transforms index.html using Nunjucks during build and dev.
+ * - Handles hot updates for .html and .njk files, triggering full reloads.
+ *
+ * @returns {Plugin} A Vite plugin object for Nunjucks integration.
+ *
+ * @example
+ * // In vite.config.ts
+ * import viteNunjucks from './src/pattern-library/plugins/viteNunjucks';
+ * export default {
+ *   plugins: [viteNunjucks()],
+ * };
+ */
 export default (): Plugin => {
-  const env = setupNunjucks();
+  const env = createNunjucksEnvironment();
   const { components, filters } = buildNunjucksExamples();
   env.addGlobal("components", components);
   env.addGlobal("filters", filters);

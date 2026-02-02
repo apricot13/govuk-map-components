@@ -3,7 +3,20 @@ import nunjucks, { type Environment } from "nunjucks";
 import * as filters from "../../nunjucks/filters";
 import * as globals from "../../nunjucks/globals";
 
-const setupNunjucks = () => {
+/**
+ * Creates and configures a Nunjucks Environment with custom filters and globals.
+ *
+ * - Loads templates from the `src` directory and GOV.UK Frontend components.
+ * - Adds all custom filters from `../../nunjucks/filters`.
+ * - Adds all custom globals from `../../nunjucks/globals`.
+ *
+ * @returns {Environment} A configured Nunjucks Environment instance.
+ *
+ * @example
+ * const env = createNunjucksEnvironment();
+ * const output = env.renderString("Hello {{ name }}", { name: "World" });
+ */
+const createNunjucksEnvironment = (): Environment => {
   const env: Environment = nunjucks.configure(
     [
       path.resolve(process.cwd(), "src"),
@@ -32,4 +45,4 @@ const setupNunjucks = () => {
   return env;
 };
 
-export default setupNunjucks;
+export default createNunjucksEnvironment;

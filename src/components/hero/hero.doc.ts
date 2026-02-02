@@ -1,4 +1,4 @@
-import buildPitsbyExamples from "../../pattern-library/setup-nunjucks/buildPitsbyExamples";
+import buildPitsbyExamples from "../../pattern-library/documentation/buildPitsbyExamples";
 const __dirname = new URL(".", import.meta.url).pathname;
 export default {
   name: "Hero",

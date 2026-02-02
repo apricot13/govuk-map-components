@@ -1,31 +1,11 @@
+import type {
+  PitsbyDocumentation,
+  PitsbyExample,
+  NunjucksDocumentation,
+} from "../types";
 import * as fs from "fs";
 import * as path from "path";
 import * as pitsbyDocs from "./../../docs";
-
-interface PitsbyDocumentation {
-  name: string;
-  description: string;
-  properties: Record<string, unknown>[];
-  examples?: PitsbyExample[];
-  visible?: boolean;
-  id?: string;
-}
-
-interface PitsbyExample {
-  title: string;
-  template: string;
-  name?: string;
-  description?: string;
-  visible?: boolean;
-}
-
-interface NunjucksDocumentation {
-  name: string;
-  description: string;
-  id: string;
-  visible: boolean;
-  examples?: NunjucksDocumentation[];
-}
 
 const getDocFiles = (dir: string): string[] => {
   let results: string[] = [];

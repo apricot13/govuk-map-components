@@ -1,7 +1,7 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from "vite";
 import path from "path";
-import nunjucks from "./src/pattern-library/setup-nunjucks/vitePlugin";
+import nunjucks from "./src/pattern-library/plugins/viteNunjucks";
 
 // Main entry for the full bundle
 const mainEntry = path.resolve(__dirname, "src/index.ts");
