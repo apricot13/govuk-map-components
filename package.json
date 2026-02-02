@@ -27,7 +27,7 @@
     "docs:dev": "tsx src/pattern-library/tools/pitsby-docs.ts watch",
     "docs:build": "tsx src/pattern-library/tools/pitsby-docs.ts build",
     "pitsby:dev": "NODE_ENV=development pitsby build --watch",
-    "pitsby:build": "NODE_ENV=production pnpm run docs:build && NODE_ENV=production pitsby build",
+    "pitsby:build": "NODE_ENV=production pnpm run build && NODE_ENV=production pnpm run docs:build && NODE_ENV=production pitsby build",
     "pitsby:serve": "NODE_ENV=production npx serve ./pitsby",
     "test": "vitest",
     "test:ui": "vitest --ui",
