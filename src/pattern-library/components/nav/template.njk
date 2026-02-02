@@ -6,7 +6,7 @@
   <nav>
     <ul>
       {% for item in params.items %}
-        {% set href = item.href | default('#' ~ item.id | default('')) %}
+        {% set href = item.href | default('#component--' ~ item.id | default('')) %}
         {% if item.visible %}
           <li>
             {{ linkItem(item.name | default('Unnamed Item'), href) }}
