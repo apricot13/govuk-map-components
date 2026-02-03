@@ -8,3 +8,4 @@ pitsby
 .*
 pnpm-lock.yaml
 pitsbyDocs
+src/components/map/template.njk
