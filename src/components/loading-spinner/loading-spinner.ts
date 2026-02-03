@@ -1,5 +1,3 @@
-/* eslint-env browser */
-
 type JobStatus = "awaiting_start" | "in_progress" | "completed" | "failed";
 
 /**

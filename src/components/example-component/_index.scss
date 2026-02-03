@@ -4,9 +4,3 @@ $selector: example-component;
 .#{$selector} {
   border: 1px solid blue;
 }
-
-// @TODO incorporate this into component properly
-/* Wide tags above page titles, e.g. Tree Preservation Order */
-.govuk-tag--wide {
-  max-width: none;
-}
