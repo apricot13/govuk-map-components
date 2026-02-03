@@ -1,0 +1,76 @@
+{%- from "govuk/components/details/macro.njk" import govukDetails -%}
+
+{% if params.pdfUrl and params.data %}
+  <map-component
+    id="{{ params.mapId }}"
+    {% if params.mapStylesUrl %}
+      data-map-styles-url="{{ params.mapStylesUrl }}"
+    {% endif %}
+    {% if params.mapStylesSatelliteUrl %}
+      data-map-styles-satellite-url="{{ params.mapStylesSatelliteUrl }}"
+    {% endif %}
+    {% if params.allowEdits | default(false) and params.dataSaveEndpoint %}
+      data-save-endpoint="{{ params.dataSaveEndpoint }}"
+    {% endif %}
+    data-pdf="{{ params.pdfUrl }}">
+  </map-component>
+
+  {% if params.allowEdits | default(false) %}
+    {{ govukDetails({
+      summaryText: "Help using the map with a keyboard",
+      html: "<p>With the map focussed, you can pan using the arrow keys and zoom using the <kbd>+</kbd> and <kbd>-</kbd> keys.</p><p>To edit using the keyboard, first click the edit button. Then you can enter <strong>keyboard edit mode</strong> by pressing the <kbd>m</kbd> key and then use the arrow keys to move the pointer and the enter or space keys to click. By holding the <kbd>shift</kbd> key you can move more quickly. Press the <kbd>m</kbd> key again to exit keyboard edit mode.</p>",
+      classes: "govuk-!-margin-top-3"
+    }) }}
+  {% endif %}
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      customElements.whenDefined("map-component").then(function() {
+        const mapEl = document.querySelector('#{{ params.mapId }}');
+        if (!mapEl || typeof mapEl.showFeature !== "function") {
+          console.warn("map-component element or showFeature method not found.");
+          return;
+        }
+
+        const areaData = {{ params.data | dump | safe }};
+        // Handle both single object and array of objects
+        const features = Array.isArray(areaData)
+          ? areaData.map(area => {
+              const { id, geometry, properties, verified } = area;
+              const featureProps = { ...properties, id, verified: verified ? "Completed" : "Needs review" };
+              delete featureProps.geometry;
+              return {
+                type: "Feature",
+                geometry,
+                properties: featureProps,
+              };
+            })
+          : [{
+              type: "Feature",
+              geometry: areaData.geometry,
+              properties: { ...areaData }
+            }];
+
+        // Remove geometry from properties for all features
+        features.forEach(f => delete f.properties.geometry);
+
+        // Show features on the map
+        features.forEach(feature => mapEl.showFeature(feature));
+
+        // If editing, set originalFeatures for reset
+        {% if params.allowEdits | default(false) %}
+        if (!Array.isArray(areaData)) {
+          const originalGeometry = areaData.original_geometry || areaData.geometry;
+          const originalFeature = {
+            type: "Feature",
+            geometry: originalGeometry,
+            properties: { ...areaData }
+          };
+          delete originalFeature.properties.geometry;
+          mapEl.originalFeatures = [originalFeature];
+        }
+        {% endif %}
+      });
+    });
+  </script>
+{% endif %}

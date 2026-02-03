@@ -1,0 +1,8 @@
+
+{% from "components/map/macro.njk" import mapComponent %}
+
+{{ mapComponent({
+	mapId: 'map-no-editing-polygon',
+	pdfUrl: '/example-upload.pdf',
+	data: testDatajobArticle4Direction.extraction_result.extracted_objects
+}) }}

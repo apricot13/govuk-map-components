@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@glorious/pitsby": "^1.37.2",
+    "@types/geojson": "^7946.0.16",
     "@types/govuk-frontend": "^5.11.0",
     "@types/node": "^25.2.0",
     "@types/nunjucks": "^3.2.6",
@@ -70,6 +71,7 @@
   },
   "dependencies": {
     "@geoman-io/maplibre-geoman-free": "^0.6.1",
+    "@turf/turf": "^7.3.3",
     "govuk-frontend": "^5.14.0",
     "maplibre-gl": "^5.16.0"
   }

@@ -11,6 +11,7 @@ import pdf from "./pdf/pdf.doc";
 import simpleMap from "./simple-map/simple-map.doc";
 import statusChecker from "./status-checker/status-checker.doc";
 import title from "./title/title.doc";
+import map from "./map/map.doc";
 
 const components: Docs["components"] = {
   "ai-notice": aiNotice,
@@ -25,6 +26,7 @@ const components: Docs["components"] = {
   "simple-map": simpleMap,
   "status-checker": statusChecker,
   title: title,
+  map: map,
 };
 
 export default components;
