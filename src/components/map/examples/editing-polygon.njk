@@ -1,12 +1,13 @@
-
 {% from "components/map/macro.njk" import mapComponent %}
 {# mapStylesUrl: 'http://localhost:8081/api/map-style-os', #}
 {# mapStylesSatelliteUrl: 'http://localhost:8081/api/map-style-satellite', #}
 {% set testData = testDatajobArticle4Direction.extraction_result.extracted_objects[0] %}
-{{ mapComponent({
-	mapId: 'map-editing-polygon',
-	allowEdits: true,
-	dataSaveEndpoint: '/api/extractions/123/entity/456/geometry',
-	pdfUrl: '/example-upload.pdf',
-	data: testData
-}) }}
+{{
+  mapComponent({
+  	mapId: 'map-editing-polygon',
+  	allowEdits: true,
+  	dataSaveEndpoint: '/api/extractions/123/entity/456/geometry',
+  	pdfUrl: '/example-upload.pdf',
+  	data: testData
+  })
+}}

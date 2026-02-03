@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-function-type */
 export class ReactiveProp<T> {
   private state: T;
   private subscribers: Function[];
