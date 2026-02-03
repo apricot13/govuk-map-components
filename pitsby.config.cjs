@@ -11,7 +11,7 @@ module.exports = {
     "./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css",
   ],
   scripts: [
-    "./dist/frontend-components.es.js",
-    "./dist/frontend-components.umd.js",
+    { src: "./dist/frontend-components.es.js", type: "module" },
+    // "./dist/frontend-components.umd.js",
   ],
 };

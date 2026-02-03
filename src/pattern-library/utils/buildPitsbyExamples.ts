@@ -3,6 +3,7 @@ import * as path from "path";
 import findExampleFiles from "./findExampleFiles";
 import createNunjucksEnvironment from "./createNunjucksEnvironment";
 import type { PitsbyExample } from "../types";
+import testData from "../../test-data";
 
 /**
  * Builds rendered example templates from example files in a directory.
@@ -21,6 +22,10 @@ import type { PitsbyExample } from "../types";
 const buildPitsbyExamples = (dir: string): PitsbyExample[] => {
   const files = findExampleFiles(dir);
   const env = createNunjucksEnvironment();
+  Object.keys(testData || {}).forEach(key => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    env.addGlobal(`testData${key}`, (testData as Record<string, any>)[key]);
+  });
   // Create an object for each file found containing rendered template
   const result = files.map(file => {
     const html = fs.readFileSync(file, "utf-8");
