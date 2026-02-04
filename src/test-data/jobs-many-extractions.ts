@@ -1,16 +1,4 @@
-// Extraction jobs
-
-export const oneExtraction = [
-  {
-    id: "test-job--status--in-progress",
-    title: "TPO_33_02.pdf",
-    job_type: "treepreservationorder",
-    status: "in_progress",
-    created_datetime: "2025-11-14 04:11:09.820132+00",
-  },
-];
-
-export const manyExtractions = [
+export default [
   {
     id: "test-job--status--completed--tree-preservation-order",
     title: "TPO_01_02.pdf",

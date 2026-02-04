@@ -1,0 +1,37 @@
+{% from "components/entity-tasks/macro.njk" import entityTasks %}
+
+
+{% set treePreservationOrders = [{verified: testDatajobTreePreservationOrder.extraction_result.metadata.verified, properties:testDatajobTreePreservationOrder.extraction_result.metadata }] %}
+{% set treePreservationZones = [] %}
+{% set trees = [] %}
+
+{% for entity in testDatajobTreePreservationOrder.extraction_result.extracted_objects %}
+  {% if entity.properties.feature_type == 'tree' %}
+    {% set _ = trees.push(entity) %}
+  {% elif entity.properties.feature_type == 'tree_preservation_zone' %}
+    {% set _ = treePreservationZones.push(entity) %}
+  {% elif not entity.properties.feature_type %}
+    {# Fallback for legacy data without feature_type: use label prefix #}
+    {% if entity.properties.label and entity.properties.label[0] == 'T' %}
+      {% set _ = trees.push(entity) %}
+    {% else %}
+      {% set _ = treePreservationZones.push(entity) %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+
+
+{% set basePath = "/" %}
+{% set job = {
+  id: "123"
+} %}
+
+{# we pass entityId because this example comes from the metadata field not extracted objects #}
+{{
+  entityTasks({ 
+    entityType: 'treepreservationorder', 
+    entities: treePreservationOrders, 
+    jobId: testDatajobTree.id,
+    entityId: testDatajobTree.id
+  })
+}}

@@ -1,3 +1,4 @@
+// used to check code quality etc
 {
   "compilerOptions": {
     "target": "ES2022",
@@ -34,11 +35,9 @@
   "include": [
     "src/**/*.ts",
     "types/*.d.ts",
-    "src/components/example-component/example-component.ts"
   ],
   "exclude": [
-    "src/components/*.doc.js",
-    "src/components/docs/*.doc.js",
-    "node_modules"
+    "node_modules",
+    "types"
   ]
 }

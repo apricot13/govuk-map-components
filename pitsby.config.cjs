@@ -1,4 +1,4 @@
-// https://pitsby.com/documentation#config
+// https://pitsby.compilorama.com/documentation#config
 module.exports = {
   projects: [
     {
@@ -7,11 +7,12 @@ module.exports = {
     },
   ],
   styles: [
-    "./dist/frontend-components.css",
-    "./node_modules/govuk-frontend/dist/govuk/govuk-frontend.min.css",
+    "./dist/extract-frontend-components.css",
+    "./dist/no-font-govuk.css",
   ],
   scripts: [
-    { src: "./dist/frontend-components.es.js", type: "module" },
-    // "./dist/frontend-components.umd.js",
+    { src: "./dist/extract-frontend-components.es.js", type: "module" },
+    // "./dist/extract-frontend-components.umd.js",
   ],
+  other: ["./dist/api/", "./dist/example-upload.pdf"],
 };

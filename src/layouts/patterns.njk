@@ -1,9 +1,9 @@
 {% extends "govuk/template.njk" %}
-{% include "layouts/partials/scripts.html" %}
-{% include "layouts/partials/styles.html" %}
+{% include "layouts/partials/scripts.njk" %}
+{% include "layouts/partials/styles.njk" %}
 
 {% block head %}
-  {% include "layouts/partials/styles.html" %}
+  {% include "layouts/partials/styles.njk" %}
 {% endblock %}
 
 {% block header %}
@@ -20,5 +20,5 @@
 {% endblock %}
 
 {% block bodyEnd %}
-  {% include "layouts/partials/scripts.html" %}
+  {% include "layouts/partials/scripts.njk" %}
 {% endblock %}

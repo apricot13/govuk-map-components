@@ -29,6 +29,7 @@ export default (): Plugin => {
   env.addGlobal("filters", filters.map(pitsbyDocToNunjucksDoc));
 
   Object.keys(testData || {}).forEach(key => {
+    // console.log(`Adding test data to Nunjucks env: testData${key}`);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     env.addGlobal(`testData${key}`, (testData as Record<string, any>)[key]);
   });

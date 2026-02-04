@@ -1,0 +1,23 @@
+// emits types
+// excludes pattern library types
+// excludes doc files because of the references to pattern-library that includes node things we don't want or need in our package
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    // "types": ["vite/client", "vitest/globals", "node"],
+  },
+  "exclude": [
+    "node_modules",
+    "src/layouts",
+    "src/nunjucks",
+    "src/test-data",
+    // pattern-library is not needed
+    "src/pattern-library/**/*.ts",
+    // these files link back to the pattern-library so we don't want them included either
+    // they're not needed for the final build
+    "src/**/*.doc.ts",
+    "src/components/docs.ts",
+    "src/nunjucks/filters/docs.ts",
+  ]
+}

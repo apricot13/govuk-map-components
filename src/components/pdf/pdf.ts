@@ -13,7 +13,7 @@ export class PdfComponent extends HTMLElement {
         .view-pdf__top:has(#show-pdf:not(:checked)) ~ .view-pdf__container { display: none; }
         .view-pdf__top:has(#show-pdf:checked) ~ .view-pdf__container { display: block; }
         .view-pdf .view-pdf__container { width: 100%; }
-        .view-pdf .view-pdf__map, .view-pdf #pdf { border: 1px solid #000; width: 100%; height: 400px; }
+        .view-pdf .view-pdf__map, .view-pdf #pdf { border: 1px solid #000; width: 100%; height: 100vh; }
       </style>
       <div class="view-pdf">
         <div class="view-pdf__top">
