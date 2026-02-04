@@ -1,44 +1,53 @@
 {
-  "name": "frontend-components",
+  "name": "extract-frontend-components",
   "private": true,
   "version": "0.0.0",
-  "packageManager": "pnpm@10.28.2",
+  "packageManager": "npm@10.28.2",
   "engines": {
-    "node": ">=25.0.0 <26"
+    "node": ">=24.0.0 <25"
   },
   "type": "module",
-  "browser": "./dist/frontend-components.umd.js",
-  "module": "./dist/frontend-components.es.js",
+  "browser": "./dist/extract-frontend-components.umd.js",
+  "module": "./dist/extract-frontend-components.es.js",
   "exports": {
     ".": {
-      "import": "./dist/frontend-components.es.js",
-      "require": "./dist/frontend-components.umd.js"
+      "import": "./dist/extract-frontend-components.es.js",
+      "require": "./dist/extract-frontend-components.umd.js"
     },
-    "./frontend-components.css": "./dist/frontend-components.css"
+    "./extract-frontend-components.css": "./dist/extract-frontend-components.css",
+    "./no-font-govuk.css": "./dist/no-font-govuk.css",
+    "./types": "./types/index.d.ts",
+    "./nunjucks":  {
+      "import": "./dist/nunjucks.es.js",
+      "require": "./dist/nunjucks.umd.js"
+    },
+    "./test-data":  {
+      "import": "./dist/test-data.es.js",
+      "require": "./dist/test-data.umd.js"
+    }
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./types/index.d.ts",
   "files": [
     "dist",
     "types",
     "src/components",
-    "src/layouts",
-    "src/nunjucks"
+    "src/layouts"
   ],
   "scripts": {
-    "dev": "pnpm run build && pnpm run docs:build && concurrently 'pnpm run dev:dev' 'pnpm run docs:dev' 'pnpm run pitsby:dev'",
-    "build": "rm -rf dist types && tsc && vite build && sed 's/src=\".*\"/src=\"frontend-components.es.js\"/' index.html > dist/index.html",
+    "dev": "npm run build && npm run docs:build && concurrently 'npm run dev:dev' 'npm run docs:dev' 'npm run pitsby:dev'",
+    "build": "rm -rf dist types && tsc -p tsconfig.build.json && vite build && LIB=nunjucks vite build && LIB=testData vite build && LIB=noFontGovuk vite build && sed 's/src=\".*\"/src=\"extract-frontend-components.es.js\"/' index.html > dist/index.html",
     "dev:dev": "vite",
     "docs:dev": "tsx src/pattern-library/tools/pitsby-docs.ts watch",
     "docs:build": "tsx src/pattern-library/tools/pitsby-docs.ts build",
-    "pitsby:dev": "NODE_ENV=development pitsby build --watch",
-    "pitsby:build": "NODE_ENV=production pnpm run build && NODE_ENV=production pnpm run docs:build && NODE_ENV=production pitsby build",
+    "pitsby:dev": "mkdir pitsby && cp -rp public/* pitsby && NODE_ENV=development pitsby build --watch",
+    "pitsby:build": "NODE_ENV=production npm run build && NODE_ENV=production npm run docs:build && NODE_ENV=production pitsby build && cp -rp public/* pitsby",
     "pitsby:serve": "NODE_ENV=production npx serve ./pitsby",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext js,ts,cjs,cts,mjs",
     "lint:fix": "eslint . --fix && prettier --write .",
-    "prepare": "husky && echo 'npx lint-staged' > .husky/pre-commit && git add .husky/pre-commit"
+    "prepare": "npm run build && husky && echo 'npx lint-staged' > .husky/pre-commit && git add .husky/pre-commit"
   },
   "devDependencies": {
     "@glorious/pitsby": "^1.37.2",

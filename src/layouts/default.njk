@@ -12,29 +12,29 @@
 
 {# head section of html #}
 {% block head %}
-  {% include "layouts/partials/styles.html" %}
+  {% include "layouts/partials/styles.njk" %}
 {% endblock %}
 
 {# display page header #}
 {% block header %}
-  {% include "layouts/partials/header.html" %}
+  {% include "layouts/partials/header.njk" %}
 {% endblock %}
 
 {# before content #}
 {% block beforeContent %}
-  {% include "layouts/partials/beforeContent.html" %}
+  {% include "layouts/partials/beforeContent.njk" %}
 {% endblock %}
 
 {# content #}
 {% block content %}
-  {% include "layouts/partials/messages.html" %}
+  {% include "layouts/partials/messages.njk" %}
 {% endblock %}
 
 {# display page footer #}
 {% block footer %}
-  {% include "components/footer/footer.html" %}
+  {% include "components/footer/footer.njk" %}
 {% endblock %}
 
 {% block bodyEnd %}
-  {% include "layouts/partials/scripts.html" %}
+  {% include "layouts/partials/scripts.njk" %}
 {% endblock %}
