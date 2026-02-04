@@ -32,10 +32,10 @@ jobs:
         uses: actions/setup-node@v6
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
 
       - name: Build docs
-        run: pnpm run docs
+        run: npm run docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
