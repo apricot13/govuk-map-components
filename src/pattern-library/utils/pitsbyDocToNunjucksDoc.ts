@@ -17,6 +17,7 @@ function pitsbyDocToNunjucksDoc(
     description: doc.description,
     id: doc.id || slugify(pascalToSentenceCase(doc.name)),
     visible: doc.visible !== false,
+    properties: doc.properties || [],
     examples: doc.examples?.map(pitsbyExampleToNunjucksDoc),
   };
 }

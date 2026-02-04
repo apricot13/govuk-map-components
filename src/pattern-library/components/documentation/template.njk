@@ -1,5 +1,34 @@
 {% from "pattern-library/components/section/macro.njk" import patternLibrarySection %}
 
+{% macro propertiesList(properties) %}
+<table class="component-properties">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Required</th>
+      <th>Type</th>
+      <th width="60%">Values</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for property in properties %}
+    <tr>
+      <td class="name"><span>{{ property.name }}</span></td>
+      <td class="required">{% if property.required is defined %}required{% endif %}</td>
+      <td class="type">{{ property.type }}</td>
+      <td class="values">
+        {% if property.values | getTypeof == "object" %}
+          <pre>{{ property.values | dump }}</pre>
+        {% else %}
+          {{ property.values }}
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endmacro %}
+
 {% for item in params.type %}
   {% set exampleFolderPath = params.folderRoot + item.id + "/" + "examples/" %}
   {% if item.visible %}
@@ -11,6 +40,10 @@
         level: 1
       })
     %}
+      {% if item.properties is defined and item.properties | length > 0 %}
+        {{ propertiesList(item.properties) }}
+      {% endif %}
+
       {% if item.examples is defined %}
         {% for example in item.examples %}
           {% if item.examples | length > 1 %}

@@ -3,6 +3,7 @@ export interface NunjucksDocumentation {
   description: string;
   id: string;
   visible: boolean;
+  properties?: Record<string, unknown>[];
   examples?: NunjucksDocumentation[];
 }
 
