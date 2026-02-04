@@ -90,5 +90,9 @@ $spinner-icon-size: 80px !default;
     @extend %govuk-body-l;
     margin-top: 0;
     text-align: center;
+
+    a:not(.govuk-button) {
+      @extend %govuk-link;
+    }
   }
 }
