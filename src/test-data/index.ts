@@ -6,6 +6,8 @@ import jobTreePreservationOrderSingleTree from "./job-single-tree";
 import jobTreePreservationOrderMultipleTrees from "./job-multiple-trees";
 import jobArticle4Direction from "./job-article4-direction";
 import jobConservationArea from "./job-conservation-area";
+import jobsManyExtractions from "./jobs-many-extractions";
+import jobsOneExtraction from "./jobs-one-extraction";
 
 export default {
   jobFailed,
@@ -16,4 +18,6 @@ export default {
   jobTreePreservationOrderMultipleTrees,
   jobArticle4Direction,
   jobConservationArea,
+  jobsManyExtractions,
+  jobsOneExtraction,
 };

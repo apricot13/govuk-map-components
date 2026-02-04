@@ -12,13 +12,12 @@
     </tr>
   </thead>
   <tbody class="govuk-table__body">
-    {% if jobs.length %}
-      {% for job in jobs %}
+    {% if params.jobs.length %}
+      {% for job in params.jobs %}
         {% if job.id %}
-          {% set jobPath = basePath ~ "extractions/" ~ job.id %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a class="govuk-link" href="{{ jobPath }}">{{ job.title }}</a>
+              <a class="govuk-link" href="{{ params.jobPath ~ job.id }}">{{ job.title }}</a>
             </td>
             <td class="govuk-table__cell">{{ job.job_type | docType }}</td>
             <td class="govuk-table__cell">
@@ -38,7 +37,7 @@
                 govukButton({
                 	html: "Delete <span class='govuk-visually-hidden'>extraction " ~ job.title ~ " created on " ~ (job.created_datetime | date("dd/mm/yy hh:mm")) ~ "</span>",
                 	type: "submit",
-                	href: basePath ~ "extractions/" ~ job.id ~ "/delete",
+                	href: params.jobPath ~ job.id ~ "/delete",
                 	classes: "govuk-button--secondary"
                 })
               }}

@@ -1,0 +1,10 @@
+{% from "components/extraction-list/macro.njk" import extractionList %}
+
+{% set basePath = "/" %}
+{% set job = {
+  id: "123"
+} %}
+
+{{
+  extractionList({ jobPath: basePath ~ "extractions/", jobs: testDatajobsManyExtractions })
+}}

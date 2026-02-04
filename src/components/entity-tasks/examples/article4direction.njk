@@ -1,0 +1,18 @@
+{% from "components/entity-tasks/macro.njk" import entityTasks %}
+
+{% set basePath = "/" %}
+{% set job = {
+  id: "123"
+} %}
+
+{# we pass entityId because this example comes from the metadata field not extracted objects #}
+{% set article4directions =  [{verified: testDatajobArticle4Direction.extraction_result.metadata.verified, properties:testDatajobArticle4Direction.extraction_result.metadata }] %}
+
+{{
+  entityTasks({ 
+    entityType: 'article4direction', 
+    entities: article4directions, 
+    jobId: testDatajobArticle4Direction.id, 
+    entityId: testDatajobArticle4Direction.id  
+  })
+}}

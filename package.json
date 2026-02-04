@@ -17,11 +17,11 @@
     "./extract-frontend-components.css": "./dist/extract-frontend-components.css",
     "./no-font-govuk.css": "./dist/no-font-govuk.css",
     "./types": "./types/index.d.ts",
-    "./nunjucks":  {
+    "./nunjucks": {
       "import": "./dist/nunjucks.es.js",
       "require": "./dist/nunjucks.umd.js"
     },
-    "./test-data":  {
+    "./test-data": {
       "import": "./dist/test-data.es.js",
       "require": "./dist/test-data.umd.js"
     }
@@ -34,14 +34,16 @@
     "src/layouts"
   ],
   "scripts": {
-    "dev": "npm run build && npm run docs:build && concurrently 'npm run dev:dev' 'npm run docs:dev' 'npm run pitsby:dev'",
-    "build": "rm -rf dist types && tsc -p tsconfig.build.json && vite build && LIB=nunjucks vite build && LIB=testData vite build && LIB=noFontGovuk vite build && sed 's/src=\".*\"/src=\"extract-frontend-components.es.js\"/' index.html > dist/index.html",
-    "dev:dev": "vite",
-    "docs:dev": "tsx src/pattern-library/tools/pitsby-docs.ts watch",
-    "docs:build": "tsx src/pattern-library/tools/pitsby-docs.ts build",
-    "pitsby:dev": "mkdir pitsby && cp -rp public/* pitsby && NODE_ENV=development pitsby build --watch",
-    "pitsby:build": "NODE_ENV=production npm run build && NODE_ENV=production npm run docs:build && NODE_ENV=production pitsby build && cp -rp public/* pitsby",
-    "pitsby:serve": "NODE_ENV=production npx serve ./pitsby",
+    "clean": "rm -rf dist types",
+    "dev": "vite",
+    "dev:docs": "npm run clean && npm run build && concurrently \"npm run watch-pitsby-docs\" \"pitsby build --watch\"",
+    "build": "npm run clean && npm run build:types && npm run build:package && sed 's/src=\".*\"/src=\"extract-frontend-components.es.js\"/' index.html > dist/index.html",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build:package": "vite build && LIB=nunjucks vite build && LIB=testData vite build && LIB=noFontGovuk vite build",
+    "docs": "npm run clean && rm -rf pitsby pitsbyDocs && npm run build && npm run build-pitsby-docs && pitsby build && cp -rp public/* pitsby",
+    "docs:serve": "npx serve ./pitsby",
+    "build-pitsby-docs": "tsx src/pattern-library/tools/pitsby-docs.ts build",
+    "watch-pitsby-docs": "tsx src/pattern-library/tools/pitsby-docs.ts watch",
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest --coverage",
