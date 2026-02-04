@@ -5,11 +5,11 @@ name: Release and deploy
 #   release:
 #     tags: ["release-v*.*.*"]
 
-# on:
-#   push:
+on:
+  push:
 
   # Allows you to run this workflow manually from the Actions tab
-  # workflow_dispatch:
+  workflow_dispatch:
 
 jobs:
   build-gh-pages:
@@ -38,7 +38,7 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Build docs
-        run: pnpm run pitsby:build
+        run: pnpm run docs
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
